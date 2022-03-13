@@ -1,10 +1,13 @@
-import './App.css';
+import "./App.css";
 import MainContainer from "./components/MainContainer";
+import { VesselProvider } from "./context/vessel-context";
 
 function App() {
   return (
     <div className="App">
-      <MainContainer />
+      <VesselProvider>
+        <MainContainer />
+      </VesselProvider>
     </div>
   );
 }
