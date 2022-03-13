@@ -21,10 +21,35 @@ const MyMapComponent = compose(
   withScriptjs,
   withGoogleMap
 )((props) => {
+  const { currentTrackStep, coordinates } = useContext(VesselContext);
 
   return (
     <GoogleMap defaultZoom={props.zoom} defaultCenter={props.center}>
-
+      {coordinates && (
+        <>
+          <Polyline
+            options={{
+              strokeColor: "red",
+              strokeOpacity: 0.75,
+              strokeWeight: 2,
+              icons: [
+                {
+                  offset: "0",
+                  repeat: "20px",
+                },
+              ],
+            }}
+            path={coordinates}
+          />
+          <Marker
+            position={coordinates[currentTrackStep]}
+            onClick={() => {
+              alert(JSON.stringify(coordinates[currentTrackStep]));
+            }}
+            icon={"http://maps.google.com/mapfiles/kml/paddle/blu-circle.png"}
+          />
+        </>
+      )}
     </GoogleMap>
   );
 });
