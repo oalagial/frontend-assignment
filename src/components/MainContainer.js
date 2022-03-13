@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import Map from "./Map";
 
 const MainContainer = () => {
-    return (
-        <div>
-            Main Container
-        </div>
-    );
+  return (
+    <>
+      <Map />
+    </>
+  );
 };
 
 export default MainContainer;
